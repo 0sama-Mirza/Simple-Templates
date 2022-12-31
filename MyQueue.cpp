@@ -23,6 +23,7 @@ class node{
             data=a;
         }
 };
+
 template<class Q>
 class queue{
     private:
