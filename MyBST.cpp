@@ -1,7 +1,6 @@
 //EveryThing In A BST Tree!!!!!!!!!
 #include<iostream>
 #include<stack>
-using namespace std;
 
 template<class T>
 class Node{
@@ -30,7 +29,7 @@ template<class U>
 class bst{
     private:
         Node<U>* Root,*Current;//The Current Pointer is only used for searching and displaying.
-        stack<int>s;      
+        std::stack<int>s;      
         Node<U>* add(U data,Node<U>* SubRoot){//SubRoot Pointer exists only to insert the values.
             if(Root==NULL){     //This will only run 1st time......     
                 return Root = new Node<U>(data);//.....
@@ -45,27 +44,27 @@ class bst{
                 SubRoot->SetRight(add(data,SubRoot->GetRight()));//This will move our SubRoot Pointer to the right
             }              //This Function will return the left or right side of the pointer's value
             else{
-                // cout<<"Value Already Added!   ID: "<<id<<endl;
+                // std::cout<<"Value Already Added!   ID: "<<id<<std::endl;
                 return SubRoot;
             }                                                 
             int BF=Get_Balance_Factor(SubRoot);
-            // cout<<"Balance Factor Of "<<SubRoot->Get_Data()<<": "<<BF<<endl;
+            // std::cout<<"Balance Factor Of "<<SubRoot->Get_Data()<<": "<<BF<<std::endl;
             if(BF>1&&SubRoot->GetLeft()->Get_Data()>data){ //LL ImBalance
-                // cout<<"LL"<<endl;
+                // std::cout<<"LL"<<std::endl;
                 return RightRotation(SubRoot);
             }
             if(BF<-1&&SubRoot->GetRight()->Get_Data()<data){ //RR ImBalance
-                // cout<<"RR"<<endl;
+                // std::cout<<"RR"<<std::endl;
                 return LeftRotation(SubRoot);
             }
             if(BF>1&&SubRoot->GetLeft()->Get_Data()<data){ //LR ImBalance
                 SubRoot->SetLeft(LeftRotation(SubRoot->GetLeft()));
-                // cout<<"LR"<<endl;
+                // std::cout<<"LR"<<std::endl;
                 return RightRotation(SubRoot);
             }
             if(BF<-1&&SubRoot->GetRight()->Get_Data()>data){//RL ImBalance
                 SubRoot->SetRight(RightRotation(SubRoot->GetRight()));
-                // cout<<"RL"<<endl;
+                // std::cout<<"RL"<<std::endl;
                 return LeftRotation(SubRoot);
             }
             return SubRoot;
@@ -82,7 +81,7 @@ class bst{
 
         Node<U>* LeftRotation(Node<U>* SubRoot){
             Node<U>* Temp=SubRoot->GetRight();
-            // cout<<"Value Of Temp: "<<Temp->Get_Data()<<endl;
+            // std::cout<<"Value Of Temp: "<<Temp->Get_Data()<<std::endl;
             SubRoot->SetRight(SubRoot->GetRight()->GetLeft());
             Temp->SetLeft(SubRoot);
             if(SubRoot==Root)
@@ -93,21 +92,21 @@ class bst{
             if(t==NULL)
                 return;
             inorderrr(t->GetLeft());
-            cout<<t->Get_Data()<<endl;
+            std::cout<<t->Get_Data()<<std::endl;
             inorderrr(t->GetRight());
         }
         void prr(Node<U>* t){
             if(t==NULL)
                 return;
             prr(t->GetRight());
-            cout<<t->Get_Data()<<endl;
+            std::cout<<t->Get_Data()<<std::endl;
             prr(t->GetLeft());
             
         }
         void post(Node<U>* t){
             if(t==NULL)
                 return;
-            cout<<t->Get_Data()<<endl;
+            std::cout<<t->Get_Data()<<std::endl;
             prr(t->GetLeft());
             prr(t->GetRight());
         }
@@ -146,7 +145,7 @@ class bst{
                 return 0;
             int LeftHight=TotalDepth(SubRoot->GetLeft());
             int RightHight=TotalDepth(SubRoot->GetRight());
-            return max(LeftHight,RightHight)+1;
+            return std::max(LeftHight,RightHight)+1;
         }
         int Get_Balance_Factor(Node<U> *SubRoot){
             if(SubRoot==NULL)
@@ -218,11 +217,11 @@ int main(){
     a.insert(6);
     a.insert(7);
     a.Inorder();
-    cout<<endl;
+    std::cout<<std::endl;
     a.PreOrder();
-    cout<<endl;
+    std::cout<<std::endl;
     a.PostOrder();
-    cout<<endl;
-    cout<<"Root Value: "<<a.RootValue()<<endl;
+    std::cout<<std::endl;
+    std::cout<<"Root Value: "<<a.RootValue()<<std::endl;
     return 0;
 }
