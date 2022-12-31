@@ -16,16 +16,14 @@ class Node{
             Right=NULL;
             height=0;
         }
-        Node* GetLeft() {return Left;}
-        Node* GetRight() {return Right;}
-        T Get_Data() {return Data;}
+        Node* GetLeft() {return Left; }
+        Node* GetRight() {return Right; }
+        T Get_Data() {return Data; }
 
-        void SetLeft(Node*L) {Left=L;}
-        void SetRight(Node*R) {Right=R;}
+        void SetLeft(Node*L) {Left=L; }
+        void SetRight(Node*R) {Right=R; }
 
-        void SetValue(T data){
-            Data=data;
-        }
+        void SetValue(T data) {Data=data; }
 };
 
 template<class U>
@@ -200,7 +198,7 @@ class bst{
             std::cout<<"\n.......Data "<<v<< " Deleted......"<<std::endl;
         }
         U LastElement() {return s.top(); }
-        void inorder() {inorderrr(Root); }
+        void Inorder() {inorderrr(Root); }
         void PreOrder() {prr(Root); }
         void PostOrder() {post(Root); }
         int count() {return counter(Root); }
@@ -219,7 +217,7 @@ int main(){
     a.insert(5);
     a.insert(6);
     a.insert(7);
-    a.inorder();
+    a.Inorder();
     cout<<endl;
     a.PreOrder();
     cout<<endl;
