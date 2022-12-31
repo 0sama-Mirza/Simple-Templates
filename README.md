@@ -1,2 +1,2 @@
 # Stack-Queue-Linked_List-Templates
-Templates Of Stack And Queues Which We Were Forced To Make.
+Templates Of Stack, Queues And Linked List Which We Were Forced To Make.
